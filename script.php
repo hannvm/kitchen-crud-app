@@ -18,11 +18,11 @@
 
     //classes
     class Food {
-        private $id;
-        private $food;
-        private $qty;
-        private $meausrement;
-        private $is_low;
+        public $id;
+        public $food;
+        public $qty;
+        public $meausrement;
+        public $is_low;
 
         public function __construct($id, $food, $qty=0, $measurement, $is_low) {
             $this-> id = $id;
@@ -38,8 +38,8 @@
     }
 
     class Recipe {
-        private $id;
-        private $recipe;
+        public $id;
+        public $recipe;
 
         public function __construct($id, $recipe) {
             $this-> id = $id;
@@ -49,42 +49,18 @@
 
     //get array with all foods objects
     while($row = $stmt_get_ingredients->fetch()) {
-        $array_ingredients[$row->food] = new Food($row->id, $row->food, $row->qty, $row->measurement, $row->is_low);
+        $array_ingredients[] = new Food($row->id, $row->food, $row->qty, $row->measurement, $row->is_low);
     }       //print_r($array_ingredients);
 
     //get array with all recipes objects
     while($row = $stmt_get_recipes->fetch()) {
-        $array_recipes[$row->recipe] = new Recipe($row->id, $row->recipe);
-    }       //print_r($array_recipes);
+        $array_recipes[] = new Recipe($row->id, $row->recipe);
+    }       
 
+    // foreach($array_recipes as $recipe) {
+    //     print_r($array_recipes['pizza']->id);
+    // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // //ingredients
-    // $marinara = new Food('marinara', 1000, 'grams', 'no');
-    // $spaghetti = new Food('spaghetti', 1000, 'grams', 'no');
-    // $mince = new Food('mince', 1000, 'grams', 'no');
-    // $pizza_base = new Food('pizza_base', 3, 'count', 'no');
-    // $mozarella = new Food('mozarella', 1000, 'grams', 'no');
-
-    // //recipes
-    $bolognese = new Recipe('bolognese', ['spaghetti' => '400', 'marinara' => '800', 'mince' => '500']);
-
-
-
-
+    //print_r($array_recipes['pizza']->recipe);
+    //print_r($array_recipes);
+    print_r($array_ingredients);

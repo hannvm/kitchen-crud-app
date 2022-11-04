@@ -1,3 +1,8 @@
+<?php require 'script.php'; ?>
+
+<?php ?>
+
+
 <html>
 <html lang="en">
 <head>
@@ -23,27 +28,22 @@
                     <th scope="col">Food</th>
                     <th scope="col">Quantity</th>
                     <th scope="col">Measurement</th>
+                    <th scope="col">Restock</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+            <?php
+                for($i =0; $i<= count($array_ingredients)-1; $i++) {
+                    echo '
+                        <tr>
+                            <td>' . $array_ingredients[$i] -> id . '</td>
+                            <td>' . $array_ingredients[$i] -> food . '</td>
+                            <td>' . $array_ingredients[$i] -> qty . '</td>
+                            <td>' . $array_ingredients[$i] -> measurement . '</td>
+                            <td></td>
+                        </tr>';
+                }
+                ?>
             </tbody>
         </table>
 
@@ -54,29 +54,22 @@
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">Recipe</th>
-                    <th scope="col">Ingredients</th>
+                    <th scope="col">Show Ingredients</th>
                     <th scope="col">Make Recipe</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <?php
+                    for($i =0; $i<= count($array_recipes)-1; $i++) {
+                        echo '
+                            <tr>
+                                <td>' . $array_recipes[$i] -> id . '</td>
+                                <td>' . $array_recipes[$i] -> recipe . '</td>
+                                <td></td>
+                                <td></td>
+                            </tr>';
+                    }
+                ?>
             </tbody>
         </table>
 
