@@ -15,7 +15,6 @@
     $stmt_get_recipes = $pdo->query('SELECT * FROM recipes');
 
 
-
     //classes
     class Food {
         public $id;
@@ -47,6 +46,7 @@
         }
     }
 
+    //load db data to array
     //get array with all foods objects
     while($row = $stmt_get_ingredients->fetch()) {
         $array_ingredients[] = new Food($row->id, $row->food, $row->qty, $row->measurement, $row->is_low);
@@ -56,11 +56,3 @@
     while($row = $stmt_get_recipes->fetch()) {
         $array_recipes[] = new Recipe($row->id, $row->recipe);
     }       
-
-    // foreach($array_recipes as $recipe) {
-    //     print_r($array_recipes['pizza']->id);
-    // }
-
-    //print_r($array_recipes['pizza']->recipe);
-    //print_r($array_recipes);
-    print_r($array_ingredients);
